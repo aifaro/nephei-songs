@@ -253,5 +253,49 @@ window.SONGS = [
     level: 2,
     hsk: 'HSK 3',
     url: 'https://suno.com/song/1bbefb2e-ef3c-43c5-94c2-445f59b6f4aa',
+    lyrics: [
+      { label: 'Verse 1', lines: [
+        ['那天你走进我的餐厅', 'nà tiān nǐ zǒujìn wǒ de cāntīng', 'The day you walked into my restaurant'],
+        ['我笑着跟你说欢迎', 'wǒ xiàozhe gēn nǐ shuō huānyíng', 'I smiled and said welcome to you'],
+        ['我一边点菜，一边看你', 'wǒ yībiān diǎncài, yībiān kàn nǐ', 'While taking your order, I kept looking at you'],
+        ['心跳得越来越快', 'xīn tiào de yuè lái yuè kuài', 'My heart beat faster and faster'],
+      ]},
+      { label: 'Verse 2', lines: [
+        ['你走的时候，我有点紧张', 'nǐ zǒu de shíhou, wǒ yǒudiǎn jǐnzhāng', 'When you were leaving, I got a little nervous'],
+        ['我问你周末有没有打算', 'wǒ wèn nǐ zhōumò yǒu méiyǒu dǎsuàn', 'I asked if you had any plans for the weekend'],
+        ['你笑着说你会再来', 'nǐ xiàozhe shuō nǐ huì zài lái', 'You smiled and said you would come again'],
+        ['我一整天都在等那句话', 'wǒ yī zhěng tiān dōu zài děng nà jù huà', 'I spent the whole day waiting for those words'],
+      ]},
+      { id: 'chorus', label: 'Chorus', lines: [
+        ['你什么时候来？我每天都在等', 'nǐ shénme shíhou lái? wǒ měitiān dōu zài děng', 'When are you coming? I wait every day'],
+        ['门开着，灯亮着，桌子都放着', 'mén kāizhe, dēng liàngzhe, zhuōzi dōu fàngzhe', 'The door is open, the lights are on, the tables are set'],
+        ['你是不是忘了我？', 'nǐ shì bu shì wàng le wǒ?', 'Have you forgotten me?'],
+        ['还是从来没想过来？', 'háishi cónglái méi xiǎng guòlái?', 'Or did you never think of coming at all?'],
+      ]},
+      { label: 'Verse 3', lines: [
+        ['我站着看着门口', 'wǒ zhànzhe kànzhe ménkǒu', 'I stand there watching the doorway'],
+        ['客人来了，又走了', 'kèrén lái le, yòu zǒu le', 'Customers come, and then go again'],
+        ['我又忙又累，又冷又饿', 'wǒ yòu máng yòu lèi, yòu lěng yòu è', 'I am busy and tired, cold and hungry'],
+        ['可是你一直没出现', 'kěshì nǐ yīzhí méi chūxiàn', 'But you never showed up'],
+      ]},
+      { label: 'Chorus 2', lines: [
+        ['你说你会来，我信了', 'nǐ shuō nǐ huì lái, wǒ xìn le', 'You said you would come, and I believed you'],
+        ['可是一天一天过去了', 'kěshì yī tiān yī tiān guòqù le', 'But day after day went by'],
+        ['我变得越来越不开心', 'wǒ biàn de yuè lái yuè bù kāixīn', 'I have become more and more unhappy'],
+        ['是不是我太认真了？', 'shì bu shì wǒ tài rènzhēn le?', 'Was I too serious about it?'],
+      ]},
+      { label: 'Bridge', lines: [
+        ['今天下着小雨，很冷', 'jīntiān xiàzhe xiǎoyǔ, hěn lěng', 'Today it is drizzling and cold'],
+        ['我已经不想再等了', 'wǒ yǐjīng bù xiǎng zài děng le', 'I no longer want to wait'],
+        ['就在我关灯的时候', 'jiù zài wǒ guān dēng de shíhou', 'Just as I was turning off the lights'],
+        ['门突然打开了', 'mén tūrán dǎkāi le', 'The door suddenly opened'],
+      ]},
+      { label: 'Outro', lines: [
+        ['你站在门口，看着我', 'nǐ zhàn zài ménkǒu, kànzhe wǒ', 'You stand at the door, looking at me'],
+        ['你说：“对不起，我来晚了。”', 'nǐ shuō: “duìbuqǐ, wǒ lái wǎn le.”', 'You say: "Sorry, I\'m late."'],
+        ['我笑了，也哭了', 'wǒ xiào le, yě kū le', 'I smiled, and I cried too'],
+        ['这一次，你真的来了', 'zhè yī cì, nǐ zhēn de lái le', 'This time, you really came'],
+      ]},
+    ],
   },
 ];
