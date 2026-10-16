@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chinese Learning Songs · 中文学习歌曲</title>
+  <meta name="description" content="Learn Chinese by singing: silly AI-made songs that drill HSK vocabulary, and real songs worth knowing. Lyrics line by line in characters, pinyin and English.">
+  <meta name="theme-color" content="#f7f1e6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='28' height='28' rx='6' fill='%23c2362b'/><text x='16' y='23' font-size='19' text-anchor='middle' fill='%23fff' font-family='serif'>歌</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f7f1e6;
+      --card: #fffdf8;
+      --ink: #221b16;
+      --text: #4a4038;
+      --muted: #85796d;
+      --line: #e6dccb;
+      --red: #c2362b;
+      --red-soft: rgba(194, 54, 43, 0.09);
+      --gold: #a87a26;
+      --l1: #3f9b5b;
+      --l2: #d08a1e;
+      --l3: #c2362b;
+      --shadow: 0 1px 2px rgba(60, 40, 20, 0.05), 0 8px 24px -12px rgba(60, 40, 20, 0.18);
+      --serif: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #17120f;
+        --card: #211a16;
+        --ink: #f5ece0;
+        --text: #d3c6b6;
+        --muted: #9a8b7b;
+        --line: #352a23;
+        --red: #e5574a;
+        --red-soft: rgba(229, 87, 74, 0.13);
+        --gold: #d3a24a;
+        --l1: #5cc27a;
+        --l2: #e8a33a;
+        --l3: #e5574a;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--paper);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+    .zh { font-family: var(--serif); }
+
+    /* Cabecera */
+    .topbar { padding-block: 1.4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
+    .topbar a { color: var(--muted); text-decoration: none; }
+    .topbar a:hover { color: var(--ink); }
+
+    .hero {
+      display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: center;
+      padding-block: 3.5rem 3rem;
+    }
+    .seal {
+      width: 132px; height: 132px; border-radius: 22px;
+      background: var(--red); color: #fff;
+      display: grid; place-items: center;
+      font: 700 5.2rem/1 var(--serif);
+      transform: rotate(-4deg);
+      box-shadow: 0 18px 40px -16px rgba(194, 54, 43, 0.65), inset 0 0 0 5px rgba(255, 255, 255, 0.18);
+    }
+    h1 { font-family: var(--serif); color: var(--ink); font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1.25; letter-spacing: 0.02em; }
+    h1 rt { font-family: 'Inter', sans-serif; font-size: 0.24em; letter-spacing: 0.04em; color: var(--muted); font-weight: 500; }
+    .subtitle { font-size: clamp(1.15rem, 2.4vw, 1.4rem); font-weight: 600; color: var(--ink); margin-top: 0.3rem; }
+    .intro { margin-top: 0.9rem; max-width: 56ch; font-size: 1.05rem; }
+
+    .stats { display: flex; gap: 0.4rem 1.6rem; flex-wrap: wrap; margin-top: 1.4rem; font-size: 0.9rem; color: var(--muted); }
+    .stats b { color: var(--ink); font-size: 1.15rem; margin-right: 0.3rem; }
+
+    /* Filtros */
+    .filters {
+      position: sticky; top: 0; z-index: 5;
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      padding: 0.8rem 0;
+    }
+    .filters .wrap { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+    .group { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
+    .group-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-right: 0.3rem; font-weight: 600; }
+    .chip {
+      font: 500 0.88rem 'Inter', sans-serif; cursor: pointer;
+      padding: 0.35rem 0.85rem; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--card); color: var(--text);
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .chip:hover { border-color: var(--muted); }
+    .chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .chip:focus-visible, .btn:focus-visible, .layer:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    /* Canciones */
+    .songs {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: 1.1rem; padding: 2rem 0 3rem;
+    }
+    .song {
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1.5rem 1.25rem;
+      display: flex; flex-direction: column;
+    }
+    .song.open { grid-column: 1 / -1; }
+    .song[hidden] { display: none; }
+
+    .song-title { font: 700 2rem/1.2 var(--serif); color: var(--ink); }
+    .song-pinyin { color: var(--red); font-weight: 500; margin-top: 0.15rem; }
+    .song-english { color: var(--muted); font-size: 0.95rem; }
+
+    .level { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.15rem 0.6rem 0.15rem 0.5rem; border-radius: 999px; border: 1px solid var(--line); }
+    .dots { display: flex; gap: 4px; }
+    .dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+    .lvl-1 .dots i:nth-child(-n+1) { background: var(--l1); }
+    .lvl-2 .dots i:nth-child(-n+2) { background: var(--l2); }
+    .lvl-3 .dots i:nth-child(-n+3) { background: var(--l3); }
+    .level span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; }
+    .lvl-1 span { color: var(--l1); } .lvl-2 span { color: var(--l2); } .lvl-3 span { color: var(--l3); }
+
+    .meta { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin: 1rem 0 1.2rem; }
+    .tag { font-size: 0.78rem; padding: 0.15rem 0.6rem; border-radius: 999px; background: var(--red-soft); color: var(--text); }
+    .tag.artist { background: transparent; border: 1px solid var(--line); }
+
+    .actions { display: flex; gap: 0.5rem; margin-top: auto; flex-wrap: wrap; }
+    .btn {
+      font: 600 0.9rem 'Inter', sans-serif; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.05rem; border-radius: 10px; border: 1px solid transparent;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-listen { background: var(--red); color: #fff; }
+    .btn-lyrics { background: transparent; border-color: var(--line); color: var(--ink); }
+    .btn-lyrics[disabled] { color: var(--muted); cursor: default; transform: none; border-style: dashed; }
+    .btn svg { width: 15px; height: 15px; }
+
+    /* Letras */
+    .lyrics { margin-top: 1.4rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+    .layers { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.2rem; }
+    .layers .group-label { margin-right: 0.4rem; }
+    .layer {
+      font: 600 0.85rem 'Inter', sans-serif; cursor: pointer;
+      padding: 0.3rem 0.8rem; border-radius: 8px;
+      border: 1px solid var(--line); background: transparent; color: var(--muted);
+    }
+    .layer[aria-pressed="true"] { background: var(--red-soft); border-color: transparent; color: var(--red); }
+    .layer .zh { font-weight: 700; }
+
+    .sections { columns: 2 380px; column-gap: 2.5rem; }
+    .section { break-inside: avoid; margin-bottom: 1.6rem; }
+    .section h4 {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold);
+      margin-bottom: 0.6rem; font-weight: 700;
+    }
+    .line { padding: 0.35rem 0; border-bottom: 1px dashed color-mix(in srgb, var(--line) 70%, transparent); }
+    .line:last-child { border-bottom: 0; }
+    .l-zh { font: 500 1.3rem/1.5 var(--serif); color: var(--ink); }
+    .l-py { color: var(--red); font-size: 0.95rem; }
+    .l-en { color: var(--muted); font-size: 0.92rem; font-style: italic; }
+    .hide-zh .l-zh, .hide-py .l-py, .hide-en .l-en { display: none; }
+
+    .empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+
+    footer { border-top: 1px solid var(--line); padding: 1.8rem 0 2.5rem; font-size: 0.9rem; color: var(--muted); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    @media (max-width: 640px) {
+      .hero { grid-template-columns: 1fr; gap: 1.6rem; padding-block-start: 1.5rem; }
+      .seal { width: 84px; height: 84px; font-size: 3.2rem; border-radius: 16px; }
+      .filters .wrap { gap: 0.6rem; }
+      .song-title { font-size: 1.7rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="wrap topbar">
+    <a href="https://nephei.org">← nephei.org</a>
+    <span class="zh">加油！</span>
+  </div>
+
+  <header class="wrap hero">
+    <div class="seal" aria-hidden="true">歌</div>
+    <div>
+      <h1 lang="zh-CN"><ruby>唱<rt>chàng</rt>着<rt>zhe</rt>学<rt>xué</rt>中<rt>zhōng</rt>文<rt>wén</rt></ruby></h1>
+      <p class="subtitle">Learn Chinese by singing along</p>
+      <p class="intro">A mix of silly songs made with AI to help HSK vocabulary and grammar stick, plus real songs that are worth learning anyway. Open the lyrics to follow each line in characters, pinyin and English.</p>
+      <div class="stats" id="stats"></div>
+    </div>
+  </header>
+
+  <nav class="filters" aria-label="Filter songs">
+    <div class="wrap">
+      <div class="group" role="group" aria-label="Level">
+        <span class="group-label">Level</span>
+        <button class="chip" data-filter="level" data-value="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="level" data-value="1" aria-pressed="false">Beginner</button>
+        <button class="chip" data-filter="level" data-value="2" aria-pressed="false">Intermediate</button>
+        <button class="chip" data-filter="level" data-value="3" aria-pressed="false">Advanced</button>
+      </div>
+      <div class="group" role="group" aria-label="Source">
+        <span class="group-label">Songs</span>
+        <button class="chip" data-filter="source" data-value="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="source" data-value="ai" aria-pressed="false">Made with AI</button>
+        <button class="chip" data-filter="source" data-value="artist" aria-pressed="false">Real artists</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="songs" id="songs"></div>
+    <p class="empty" id="empty" hidden>No songs match those filters yet.</p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>Made with <a href="https://www.youtube.com/watch?v=ZhnjLj2Ou90" title="冰淇淋">🍦</a> and ❤️ for HSK几 learners.</span>
+      <a href="https://nephei.org">nephei.org</a>
+    </div>
+  </footer>
+
+  <noscript><p class="wrap empty">This page needs JavaScript to show the songs.</p></noscript>
+
+  <script src="songs.js"></script>
+  <script>
+    (function () {
+      var LEVELS = { 1: 'Beginner', 2: 'Intermediate', 3: 'Advanced' };
+      var ICON_OUT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+      var ICON_TEXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>';
+      var songs = window.SONGS || [];
+      var list = document.getElementById('songs');
+      var filters = { level: 'all', source: 'all' };
+
+      // Capas visibles de la letra; se recuerdan en este navegador.
+      var layers = { zh: true, py: true, en: true };
+      try { var saved = JSON.parse(localStorage.getItem('songs-layers')); if (saved) layers = saved; } catch (e) {}
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function sections(song) {
+        var byId = {};
+        return song.lyrics.map(function (s) {
+          var lines = s.repeat ? byId[s.repeat] : s.lines;
+          if (s.id) byId[s.id] = s.lines;
+          return { label: s.label, lines: lines || [] };
+        });
+      }
+
+      function layerClass() {
+        return ['zh', 'py', 'en'].filter(function (k) { return !layers[k]; })
+          .map(function (k) { return 'hide-' + k; }).join(' ');
+      }
+
+      function lyricsHtml(song) {
+        var html = '<div class="layers" role="group" aria-label="Show in lyrics">' +
+          '<span class="group-label">Show</span>' +
+          '<button class="layer" data-layer="zh" aria-pressed="' + layers.zh + '"><span class="zh">汉字</span> Characters</button>' +
+          '<button class="layer" data-layer="py" aria-pressed="' + layers.py + '">Pinyin</button>' +
+          '<button class="layer" data-layer="en" aria-pressed="' + layers.en + '">English</button>' +
+          '</div><div class="sections ' + layerClass() + '">';
+        sections(song).forEach(function (s) {
+          html += '<div class="section"><h4>' + esc(s.label) + '</h4>';
+          s.lines.forEach(function (l) {
+            html += '<div class="line"><div class="l-zh" lang="zh">' + esc(l[0]) + '</div>' +
+                    '<div class="l-py">' + esc(l[1]) + '</div>' +
+                    '<div class="l-en">' + esc(l[2]) + '</div></div>';
+          });
+          html += '</div>';
+        });
+        return html + '</div>';
+      }
+
+      function render() {
+        list.innerHTML = '';
+        songs.forEach(function (song, i) {
+          var el = document.createElement('article');
+          el.className = 'song';
+          el.dataset.level = song.level;
+          el.dataset.source = song.source;
+          var where = /suno\.com/.test(song.url) ? 'Listen on Suno' : 'Watch on YouTube';
+          var tags = '<span class="tag artist">' + esc(song.artist) + '</span>' +
+            (song.hsk ? '<span class="tag">' + esc(song.hsk) + '</span>' : '') +
+            (song.note ? '<span class="tag">' + esc(song.note) + '</span>' : '');
+          el.innerHTML =
+            '<h2 class="song-title" lang="zh">' + esc(song.title) + '</h2>' +
+            '<p class="song-pinyin">' + esc(song.pinyin) + '</p>' +
+            '<p class="song-english">' + esc(song.english) + '</p>' +
+            '<div class="meta"><span class="level lvl-' + song.level + '"><span class="dots"><i></i><i></i><i></i></span><span>' + LEVELS[song.level] + '</span></span>' + tags + '</div>' +
+            '<div class="actions">' +
+              '<a class="btn btn-listen" href="' + esc(song.url) + '" target="_blank" rel="noopener">' + where + ICON_OUT + '</a>' +
+              (song.lyrics
+                ? '<button class="btn btn-lyrics" aria-expanded="false" aria-controls="lyrics-' + i + '">' + ICON_TEXT + '<span>Lyrics</span></button>'
+                : '<button class="btn btn-lyrics" disabled>No lyrics yet</button>') +
+            '</div>' +
+            (song.lyrics ? '<div class="lyrics" id="lyrics-' + i + '" hidden></div>' : '');
+          list.appendChild(el);
+        });
+        applyFilters();
+      }
+
+      function applyFilters() {
+        var shown = 0;
+        list.querySelectorAll('.song').forEach(function (el) {
+          var ok = (filters.level === 'all' || el.dataset.level === filters.level) &&
+                   (filters.source === 'all' || el.dataset.source === filters.source);
+          el.hidden = !ok;
+          if (ok) shown++;
+        });
+        document.getElementById('empty').hidden = shown > 0;
+      }
+
+      list.addEventListener('click', function (e) {
+        var toggle = e.target.closest('.btn-lyrics:not([disabled])');
+        if (toggle) {
+          var card = toggle.closest('.song');
+          var panel = card.querySelector('.lyrics');
+          var open = toggle.getAttribute('aria-expanded') !== 'true';
+          if (open && !panel.innerHTML) panel.innerHTML = lyricsHtml(songs[[].indexOf.call(list.children, card)]);
+          panel.hidden = !open;
+          card.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open);
+          toggle.querySelector('span').textContent = open ? 'Hide lyrics' : 'Lyrics';
+          if (open) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          return;
+        }
+        var layer = e.target.closest('.layer');
+        if (layer) {
+          var k = layer.dataset.layer;
+          layers[k] = !layers[k];
+          if (!layers.zh && !layers.py && !layers.en) layers[k] = true; // siempre queda una capa
+          try { localStorage.setItem('songs-layers', JSON.stringify(layers)); } catch (e2) {}
+          list.querySelectorAll('.lyrics').forEach(function (p) {
+            var secs = p.querySelector('.sections');
+            if (secs) secs.className = 'sections ' + layerClass();
+            p.querySelectorAll('.layer').forEach(function (b) { b.setAttribute('aria-pressed', layers[b.dataset.layer]); });
+          });
+        }
+      });
+
+      document.querySelectorAll('.chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var f = chip.dataset.filter;
+          filters[f] = chip.dataset.value;
+          document.querySelectorAll('.chip[data-filter="' + f + '"]').forEach(function (c) {
+            c.setAttribute('aria-pressed', c === chip);
+          });
+          applyFilters();
+        });
+      });
+
+      var withLyrics = songs.filter(function (s) { return s.lyrics; }).length;
+      var ai = songs.filter(function (s) { return s.source === 'ai'; }).length;
+      document.getElementById('stats').innerHTML =
+        '<span><b>' + songs.length + '</b>songs</span>' +
+        '<span><b>' + withLyrics + '</b>with lyrics</span>' +
+        '<span><b>' + ai + '</b>made with AI</span>' +
+        '<span><b>' + (songs.length - ai) + '</b>by real artists</span>';
+
+      render();
+    })();
+  </script>
+</body>
+</html>
